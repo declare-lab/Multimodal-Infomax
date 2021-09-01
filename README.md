@@ -1,6 +1,6 @@
 # MultiModal-InfoMax
 
-This repository contains the official implementation code of the paper [Improving Multimodal Fusion with Hierarchical Mutual Information Maximization for Multimodal Sentiment Analysis](), accepted at ``EMNLP 2021``.
+This repository contains the official implementation code of the paper [Improving Multimodal Fusion with Hierarchical Mutual Information Maximization for Multimodal Sentiment Analysis](), accepted at **EMNLP 2021**.
 
 :fire:  If you would be interested in other multimodal works in our DeCLaRe Lab, welcome to visit the [clustered repository](https://github.com/declare-lab/multimodal-deep-learning)
 
@@ -10,7 +10,7 @@ Multimodal-informax (MMIM) synthesizes fusion results from multi-modality input 
 ![Alt text](img/ModelFigSingle.png?raw=true "Model")
 
 ## Usage
-1. Download the CMU-MOSI and CMU-MOSEI dataset from [Google Drive]() or [Baidu Disk](). Please them under the folder `Multimodal-Infomax/datasets`
+1. Download the CMU-MOSI and CMU-MOSEI dataset from [Google Drive](https://drive.google.com/drive/folders/1djN_EkrwoRLUt7Vq_QfNZgCl_24wBiIK?usp=sharing) or [Baidu Disk](https://pan.baidu.com/s/1Wxo4Bim9JhNmg8265p3ttQ) (extraction code: g3m2). Place them under the folder `Multimodal-Infomax/datasets`
 
 2. Set up the environment (need conda prerequisite)
 ```

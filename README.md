@@ -2,7 +2,7 @@
 
 This repository contains the official implementation code of the paper [Improving Multimodal Fusion with Hierarchical Mutual Information Maximization for Multimodal Sentiment Analysis](), accepted to ``EMNLP 2021``.
 
-:fire: If you would be interested in other multimodal works in our DeCLaRe Lab, welcome to visit the [clustered repository](https://github.com/declare-lab/multimodal-deep-learning)
+:fire:  If you would be interested in other multimodal works in our DeCLaRe Lab, welcome to visit the [clustered repository](https://github.com/declare-lab/multimodal-deep-learning)
 
 ## Introduction
 Multimodal-informax (MMIM) synthesizes fusion results from multi-modality input through a two-level mutual information (MI) maximization. We use BA (Barber-Agakov) lower bound and contrastive predictive coding as the target function to be maximized. To facilitate the computation, we design an entropy estimation module with associated history data memory to facilitate the computation of BA lower bound and the training process.
@@ -33,3 +33,6 @@ Please cite our paper if you find our work useful for your research:
   year={2021}
 }
 ```
+
+## Contact 
+Should you have any question, feel free to contact me through [henryhan88888@gmail.com](henryhan88888@gmail.com)

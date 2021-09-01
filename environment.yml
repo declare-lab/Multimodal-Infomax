@@ -1,4 +1,4 @@
-name: emnlp
+name: MMIM
 channels:
   - pytorch
   - conda-forge
@@ -242,4 +242,4 @@ dependencies:
     - word2number==1.1
     - wrapt==1.11.1
     - yarg==0.1.9
-prefix: /home/henry/miniconda3/envs/emnlp
+prefix: /home/henry/miniconda3/envs/MMIM

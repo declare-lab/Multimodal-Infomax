@@ -36,13 +36,13 @@ criterion_dict = {
 }
 
 def get_args():
-    parser = argparse.ArgumentParser(description='MOSEI Sentiment Analysis')
+    parser = argparse.ArgumentParser(description='MOSI-and-MOSEI Sentiment Analysis')
     parser.add_argument('-f', default='', type=str)
 
     # Tasks
-    parser.add_argument('--dataset', type=str, default='mosi', choices=['mosi','mosei','ur_funny'],
+    parser.add_argument('--dataset', type=str, default='mosi', choices=['mosi','mosei'],
                         help='dataset to use (default: mosei)')
-    parser.add_argument('--data_path', type=str, default='data',
+    parser.add_argument('--data_path', type=str, default='datasets',
                         help='path for storing the dataset')
 
     # Dropouts

@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm_notebook
 from collections import defaultdict
-from subprocess import check_call, CalledProcessError
+from subprocess import check_call
 
 import torch
 import torch.nn as nn
@@ -55,29 +55,6 @@ class MOSI:
             if not os.path.exists(DATA_PATH):
                 check_call(' '.join(['mkdir', '-p', DATA_PATH]), shell=True)
             
-            # define your different modalities - refer to the filenames of the CSD files
-            visual_field = 'CMU_MOSI_VisualFacet_4.1'
-            acoustic_field = 'CMU_MOSI_COVAREP'
-            text_field = 'CMU_MOSI_TimestampedWords'
-
-            features = [
-                text_field, 
-                visual_field, 
-                acoustic_field
-            ]
-
-            recipe = {feat: os.path.join(DATA_PATH, feat) + '.csd' for feat in features}
-            print(recipe)
-
-            # we define a simple averaging function that does not depend on intervals
-            def avg(intervals: np.array, features: np.array) -> np.array:
-                try:
-                    return np.average(features, axis=0)
-                except:
-                    return features
-
-            label_field = 'CMU_MOSI_Opinion_Labels'
-
             # load pickle file for unaligned acoustic and visual source
             pickle_filename = '../datasets/MOSI/mosi_data_noalign.pkl'
             csv_filename = '../datasets/MOSI/MOSI-label.csv'
@@ -140,7 +117,7 @@ class MOSI:
                 try:
                     index = all_csv_id.index((idd1,idd2))
                 except:
-                    import ipdb; ipdb.set_trace()
+                    exit()
                 """
                     Retrive noalign data from pickle file 
                 """
@@ -237,33 +214,8 @@ class MOSEI:
             if not os.path.exists(DATA_PATH):
                 check_call(' '.join(['mkdir', '-p', DATA_PATH]), shell=True)
             
-            # define your different modalities - refer to the filenames of the CSD files
-            visual_field = 'CMU_MOSEI_VisualFacet42'
-            acoustic_field = 'CMU_MOSEI_COVAREP'
-            text_field = 'CMU_MOSEI_TimestampedWords'
-
-            features = [
-                text_field, 
-                visual_field, 
-                acoustic_field
-            ]
-
-            # recipe = {feat: os.path.join(DATA_PATH, feat) + '.csd' for feat in features}
-            # print(recipe)
-            # dataset = md.mmdataset(recipe)
-
-            # we define a simple averaging function that does not depend on intervals
-            def avg(intervals: np.array, features: np.array) -> np.array:
-                try:
-                    return np.average(features, axis=0)
-                except:
-                    return features
-
             # first we align to words with averaging, collapse_function receives a list of functions
             # dataset.align(text_field, collapse_functions=[avg])
-
-            label_field = 'CMU_MOSEI_Labels'
-
             # load pickle file for unaligned acoustic and visual source
             pickle_filename = '../datasets/MOSEI/mosei_senti_data_noalign.pkl'
             csv_filename = '../datasets/MOSEI/MOSEI-label.csv'

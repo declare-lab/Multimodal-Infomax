@@ -140,10 +140,8 @@ class MMILB(nn.Module):
         )
 
     def forward(self, x, y, labels=None, mem=None):
-        """
-            MLB with random shuffle, the Q function in original paper:
-                MLB = -E_p(x)p(y)[log q(y|x)]
-            
+        """ Forward lld (gaussian prior) and entropy estimation, partially refers the implementation
+        of https://github.com/Linear95/CLUB/blob/master/MI_DA/main_DANN.py
             Args:
                 x (Tensor): x in above equation, shape (bs, x_size)
                 y (Tensor): y in above equation, shape (bs, y_size)

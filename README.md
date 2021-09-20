@@ -29,7 +29,7 @@ Please cite our paper if you find our work useful for your research:
 @article{han2021improving,
   title={Improving Multimodal Fusion with Hierarchical Mutual Information Maximization for Multimodal Sentiment Analysis},
   author={Han, Wei and Chen, Hui and Poria, Soujanya},
-  journal={Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  journal={Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
   year={2021}
 }
 ```

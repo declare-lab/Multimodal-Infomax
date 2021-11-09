@@ -44,13 +44,13 @@ def eval_mosei_senti(results, truths, exclude_zero=False):
     # f_score = f1_score((test_preds[non_zeros] > 0), (test_truth[non_zeros] > 0), average='weighted')
     binary_truth_non0 = test_truth[non_zeros] > 0
     binary_preds_non0 = test_preds[non_zeros] > 0
-    f_score_non0 = f1_score(binary_preds_non0, binary_truth_non0, average='weighted')
-    acc_2_non0 = accuracy_score(binary_preds_non0, binary_truth_non0)
+    f_score_non0 = f1_score(binary_truth_non0, binary_preds_non0, average='weighted')
+    acc_2_non0 = accuracy_score(binary_truth_non0, binary_preds_non0)
 
     binary_truth_has0 = test_truth >= 0
     binary_preds_has0 = test_preds >= 0
-    acc_2 = accuracy_score(binary_preds_has0, binary_truth_has0)
-    f_score = f1_score(binary_preds_has0, binary_truth_has0, average='weighted')
+    acc_2 = accuracy_score(binary_truth_has0, binary_preds_has0)
+    f_score = f1_score(binary_truth_has0, binary_preds_has0, average='weighted')
     
 
     print("MAE: ", mae)
@@ -65,42 +65,3 @@ def eval_mosei_senti(results, truths, exclude_zero=False):
 
 def eval_mosi(results, truths, exclude_zero=False):
     return eval_mosei_senti(results, truths, exclude_zero)
-
-def eval_humor(results, truths, exclude_zero=False):
-    results = results.cpu().detach().numpy()
-    truths = truths.cpu().detach().numpy()
-
-    test_preds = np.argmax(results, 1)
-    test_truth = truths
-
-    print("Confusion Matrix (pos/neg) :")
-    print(confusion_matrix(test_truth, test_preds))
-    print("Classification Report (pos/neg) :")
-    print(classification_report(test_truth, test_preds, digits=5))
-    print("Accuracy (pos/neg) ", accuracy_score(test_truth, test_preds))
-
-def eval_iemocap(results, truths, single=-1):
-    emos = ["Neutral", "Happy", "Sad", "Angry"]
-    if single < 0:
-        test_preds = results.view(-1, 4, 2).cpu().detach().numpy()
-        test_truth = truths.view(-1, 4).cpu().detach().numpy()
-        
-        for emo_ind in range(4):
-            print(f"{emos[emo_ind]}: ")
-            test_preds_i = np.argmax(test_preds[:,emo_ind],axis=1)
-            test_truth_i = test_truth[:,emo_ind]
-            f1 = f1_score(test_truth_i, test_preds_i, average='weighted')
-            acc = accuracy_score(test_truth_i, test_preds_i)
-            print("  - F1 Score: ", f1)
-            print("  - Accuracy: ", acc)
-    else:
-        test_preds = results.view(-1, 2).cpu().detach().numpy()
-        test_truth = truths.view(-1).cpu().detach().numpy()
-        
-        print(f"{emos[single]}: ")
-        test_preds_i = np.argmax(test_preds,axis=1)
-        test_truth_i = test_truth
-        f1 = f1_score(test_truth_i, test_preds_i, average='weighted')
-        acc = accuracy_score(test_truth_i, test_preds_i)
-        print("  - F1 Score: ", f1)
-        print("  - Accuracy: ", acc)
